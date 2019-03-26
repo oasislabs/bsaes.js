@@ -1,0 +1,29 @@
+{
+  "name": "aes",
+  "version": "0.0.1",
+  "description": "Advanced Encryption Standard",
+  "main": "./aes",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint *.js ./test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oasislabs/aes.js.git"
+  },
+  "author": "Oasis Labs Inc. <info@oasislabs.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.14.0",
+    "chai": "*",
+    "mocha": "*",
+    "webpack": "^4.29.4",
+    "webpack-command": "^0.4.2"
+  },
+  "dependencies": {
+    "uint32": "^0.2.1"
+  }
+}

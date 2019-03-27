@@ -4,8 +4,9 @@
   "description": "Advanced Encryption Standard",
   "main": "./aes",
   "scripts": {
+    "bench": "node ./bench/bench.js",
     "test": "mocha",
-    "lint": "eslint *.js ./test/"
+    "lint": "eslint *.js ./test/ ./bench/"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,10 @@
     "@babel/core": "^7.3.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
-    "eslint": "^5.14.0",
+    "benchmark": "^2.1.4",
     "chai": "*",
+    "eslint": "^5.14.0",
+    "microtime": "^3.0.0",
     "mocha": "*",
     "webpack": "^4.29.4",
     "webpack-command": "^0.4.2"

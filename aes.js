@@ -382,7 +382,7 @@ function _subWord(x) {
 
 function keySched(compSkey, key) {
 	let numRounds = 0;
-	const keyLen = key.length;
+	const keyLen = key.byteLength;
 	switch (keyLen) {
 	case 16:
 		numRounds = 10;

@@ -24,11 +24,11 @@ var aes = require('../aes');
 var Benchmark = require('benchmark');
 
 
-var ecb128 = new aes.ECB(Buffer.alloc(16));
-var ecb192 = new aes.ECB(Buffer.alloc(24));
-var ecb256 = new aes.ECB(Buffer.alloc(32));
-var src = Buffer.alloc(16);
-var dst = Buffer.alloc(16);
+var ecb128 = new aes.ECB(new Uint8Array(16));
+var ecb192 = new aes.ECB(new Uint8Array(24));
+var ecb256 = new aes.ECB(new Uint8Array(32));
+var src = new Uint8Array(16);
+var dst = new Uint8Array(16);
 
 var suite = new Benchmark.Suite;
 suite.add('ECB-AES128', function() {

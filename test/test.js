@@ -107,18 +107,18 @@ describe('ECB-AES', function() {
 		for (let i = 0; i < numVectors; i++) {
 			const vector = ecbVectors[i];
 
-			let ecb = new aes.ECB(vector.key);
-			let dst = Buffer.alloc(16);
-			ecb.encrypt(dst, vector.plaintext);
-			assert.deepEqual(dst, vector.ciphertext);
+			let ecb = new aes.ECB(new Uint8Array(vector.key));
+			let dst = new Uint8Array(16);
+			ecb.encrypt(dst, new Uint8Array(vector.plaintext));
+			assert.deepEqual(dst, new Uint8Array(vector.ciphertext));
 		}
 	});
 
 	it('should handle 2 blocks at once', function() {
-		let ecb = new aes.ECB(ecbVectors[0].key);
-		let dst0 = Buffer.alloc(16), dst1 = Buffer.alloc(16);
-		ecb.encrypt2x(dst0, dst1, ecbVectors[0].plaintext, ecbVectors[1].plaintext);
-		assert.deepEqual(dst0, ecbVectors[0].ciphertext);
-		assert.deepEqual(dst1, ecbVectors[1].ciphertext);
+		let ecb = new aes.ECB(new Uint8Array(ecbVectors[0].key));
+		let dst0 = new Uint8Array(16), dst1 = new Uint8Array(16);
+		ecb.encrypt2x(dst0, dst1, new Uint8Array(ecbVectors[0].plaintext), new Uint8Array(ecbVectors[1].plaintext));
+		assert.deepEqual(dst0, new Uint8Array(ecbVectors[0].ciphertext));
+		assert.deepEqual(dst1, new Uint8Array(ecbVectors[1].ciphertext));
 	});
 });

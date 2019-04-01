@@ -262,10 +262,11 @@ function mixColumns(q) {
 }
 
 function load4xU32(q, src) {
-	q[0] = src.readUInt32LE(0);
-	q[2] = src.readUInt32LE(4);
-	q[4] = src.readUInt32LE(8);
-	q[6] = src.readUInt32LE(12);
+	const srcView = new DataView(src.buffer);
+	q[0] = srcView.getUint32(0, true);
+	q[2] = srcView.getUint32(4, true);
+	q[4] = srcView.getUint32(8, true);
+	q[6] = srcView.getUint32(12, true);
 	q[1] = 0;
 	q[3] = 0;
 	q[5] = 0;
@@ -274,35 +275,40 @@ function load4xU32(q, src) {
 }
 
 function load8xU32(q, src0, src1) {
-	q[0] = src0.readUInt32LE(0);
-	q[2] = src0.readUInt32LE(4);
-	q[4] = src0.readUInt32LE(8);
-	q[6] = src0.readUInt32LE(12);
-	q[1] = src1.readUInt32LE(0);
-	q[3] = src1.readUInt32LE(4);
-	q[5] = src1.readUInt32LE(8);
-	q[7] = src1.readUInt32LE(12);
+	const src0View = new DataView(src0.buffer);
+	const src1View = new DataView(src1.buffer);
+	q[0] = src0View.getUint32(0, true);
+	q[2] = src0View.getUint32(4, true);
+	q[4] = src0View.getUint32(8, true);
+	q[6] = src0View.getUint32(12, true);
+	q[1] = src1View.getUint32(0, true);
+	q[3] = src1View.getUint32(4, true);
+	q[5] = src1View.getUint32(8, true);
+	q[7] = src1View.getUint32(12, true);
 	ortho(q)
 }
 
 function store4xU32(dst, q) {
 	ortho(q);
-	dst.writeUInt32LE(q[0], 0);
-	dst.writeUInt32LE(q[2], 4);
-	dst.writeUInt32LE(q[4], 8);
-	dst.writeUInt32LE(q[6], 12);
+	const dstView = new DataView(dst.buffer);
+	dstView.setUint32(0, q[0], true);
+	dstView.setUint32(4, q[2], true);
+	dstView.setUint32(8, q[4], true);
+	dstView.setUint32(12, q[6], true);
 }
 
 function store8xU32(dst0, dst1, q) {
 	ortho(q);
-	dst0.writeUInt32LE(q[0], 0);
-	dst0.writeUInt32LE(q[2], 4);
-	dst0.writeUInt32LE(q[4], 8);
-	dst0.writeUInt32LE(q[6], 12);
-	dst1.writeUInt32LE(q[1], 0);
-	dst1.writeUInt32LE(q[3], 4);
-	dst1.writeUInt32LE(q[5], 8);
-	dst1.writeUInt32LE(q[7], 12);
+	const dst0View = new DataView(dst0.buffer);
+	const dst1View = new DataView(dst1.buffer);
+	dst0View.setUint32(0, q[0], true);
+	dst0View.setUint32(4, q[2], true);
+	dst0View.setUint32(8, q[4], true);
+	dst0View.setUint32(12, q[6], true);
+	dst1View.setUint32(0, q[1], true);
+	dst1View.setUint32(4, q[3], true);
+	dst1View.setUint32(8, q[5], true);
+	dst1View.setUint32(12, q[7], true);
 }
 
 function ortho(q) {
@@ -336,8 +342,9 @@ function ortho(q) {
 }
 
 function rkeyOrtho(q, key) {
+	const keyView = new DataView(key.buffer);
 	for (let i = 0; i < 4; i++) {
-		const x = key.readUInt32LE(i*4);
+		const x = keyView.getUint32(i*4, true);
 		q[i*2] = x;
 		q[i*2+1] = x;
 	}
@@ -401,8 +408,9 @@ function keySched(compSkey, key) {
 	let tmp = 0;
 	const nk = keyLen / 4;
 	const nkf = (numRounds + 1) * 4;
+	const keyView = new DataView(key.buffer);
 	for (let i = 0; i < nk; i++) {
-		tmp = key.readUInt32LE(i*4);
+		tmp = keyView.getUint32(i*4, true);
 		skey[i*2] = tmp;
 		skey[i*2+1] = tmp;
 	}

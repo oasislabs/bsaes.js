@@ -1,4 +1,5 @@
 ### aes.js - JavaScript AES
+[![CircleCI](https://circleci.com/gh/oasislabs/aes.js.svg?style=svg&circle-token=6ba68a39db1ae2e06b0cd0285214c8c6e9ea7023)](https://circleci.com/gh/oasislabs/aes.js)
 
 > Just as it's possible to write a TCP/IP protocol stack in some utterly
 > inappropriate programing language like ML or Visual Basic, so too, it's

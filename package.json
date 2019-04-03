@@ -1,5 +1,5 @@
 {
-  "name": "aes.js",
+  "name": "bsaes",
   "version": "0.0.1",
   "description": "Advanced Encryption Standard",
   "main": "./aes",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oasislabs/aes.js.git"
+    "url": "git+https://github.com/oasislabs/bsaes.js.git"
   },
   "author": "Oasis Labs Inc. <info@oasislabs.com>",
   "license": "MIT",

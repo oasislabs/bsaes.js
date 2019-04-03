@@ -12,6 +12,10 @@ This package provides a pure-JavaScript bitsliced AES implementation,
 as logical operations on 32 bit unsigned integers, ported from the
 [Go port][0] of the [BearSSL code][1].
 
+As a concession to performance and the futility of pure-JS crypto,
+a variable time table based `AESENC` analog is also provided in the
+`unsafe` sub-module.
+
 #### WARNING
 
 THIS IS NOT INTENDED AS A GENERAL PURPOSE AES IMPLEMENTATION.  Unless
